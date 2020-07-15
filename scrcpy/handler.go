@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ClarkGuan/go-sdl2/sdl"
+	"github.com/veandco/go-sdl2/sdl"
 )
 
 const (
@@ -75,7 +75,7 @@ type controlHandler struct {
 	textBuf         bytes.Buffer
 }
 
-func (ch *controlHandler) Init(r sdl.Renderer) {
+func (ch *controlHandler) Init(r *sdl.Renderer) {
 	var err error
 	if ch.font == nil {
 		if ch.font, err = OpenFont(filepath.Join(sdl.GetBasePath(), "res", "YaHei.Consolas.1.12.ttf"), 35); err != nil {
@@ -88,7 +88,7 @@ func (ch *controlHandler) Init(r sdl.Renderer) {
 	ch.displayPosition.Y = 50
 }
 
-func (ch *controlHandler) Render(r sdl.Renderer) {
+func (ch *controlHandler) Render(r *sdl.Renderer) {
 	ch.textBuf.Reset()
 
 	switch ch.doubleHit {

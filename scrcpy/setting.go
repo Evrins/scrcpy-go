@@ -1,6 +1,6 @@
 package scrcpy
 
-import "github.com/ClarkGuan/go-sdl2/sdl"
+import "github.com/veandco/go-sdl2/sdl"
 
 const (
 	BUTTON_LEFT               = "BUTTON_LEFT"

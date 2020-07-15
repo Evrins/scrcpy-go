@@ -1,8 +1,8 @@
 package scrcpy
 
 import (
-	"github.com/ClarkGuan/go-sdl2/sdl"
-	"github.com/ClarkGuan/go-sdl2/ttf"
+	"github.com/veandco/go-sdl2/sdl"
+	"github.com/veandco/go-sdl2/ttf"
 )
 
 type Font struct {
@@ -33,10 +33,10 @@ func (f *Font) GetTextSize(text string) (int, int, error) {
 
 type TextTexture struct {
 	text    string
-	texture sdl.Texture
+	texture *sdl.Texture
 }
 
-func (tt *TextTexture) Update(renderer sdl.Renderer, f *Font, text string, color sdl.Color, src *sdl.Rect) error {
+func (tt *TextTexture) Update(renderer *sdl.Renderer, f *Font, text string, color sdl.Color, src *sdl.Rect) error {
 	if tt.text == text {
 		tt.getTextureSize(src)
 		return nil
@@ -44,7 +44,7 @@ func (tt *TextTexture) Update(renderer sdl.Renderer, f *Font, text string, color
 
 	tt.text = text
 	if len(tt.text) == 0 {
-		tt.texture = 0
+		tt.texture = nil
 		return nil
 	}
 
@@ -59,8 +59,8 @@ func (tt *TextTexture) Update(renderer sdl.Renderer, f *Font, text string, color
 	return err
 }
 
-func (tt *TextTexture) Render(renderer sdl.Renderer, dst *sdl.Rect) error {
-	if tt.texture == 0 || len(tt.text) == 0 {
+func (tt *TextTexture) Render(renderer *sdl.Renderer, dst *sdl.Rect) error {
+	if tt.texture == nil || len(tt.text) == 0 {
 		return nil
 	}
 	return renderer.Copy(tt.texture, nil, dst)

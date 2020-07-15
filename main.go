@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ClarkGuan/go-sdl2/sdl"
+	"github.com/veandco/go-sdl2/sdl"
 	"github.com/ClarkGuan/scrcpy-go/scrcpy"
 	"gopkg.in/yaml.v2"
 )
